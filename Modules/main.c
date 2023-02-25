@@ -11,14 +11,21 @@ int sub(int argc, module_data* argv) {
     
     return z;
 }
+
+// This is the "head" of the linked list
 CommandNode func_sub = {NULL, NULL, sub, "sub", "This function subtracts two numbers"};
 
 int main(int argc, char** argv) {
     CommandNode* command_list;
     command_list = &func_sub;
 
+    // Just showing off that loading/unloading works as intended
     print_command_list(command_list);
     load_module(command_list, "module_example.dll");
+    load_module(command_list, "module_example.dll");
+    print_command_list(command_list);
+    unload_module(command_list, "module_example.dll");
+    print_command_list(command_list);
     load_module(command_list, "module_example.dll");
     print_command_list(command_list);
 
